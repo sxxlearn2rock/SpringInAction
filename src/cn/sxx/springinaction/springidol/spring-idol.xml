@@ -8,6 +8,37 @@
 		http://www.springframework.org/schema/aop
 		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-	<bean id="duke" class="cn.sxx.springinaction.springidol.Juggler" />
+	<bean id="duke" class="cn.sxx.springinaction.springidol.Juggler">
+	    <constructor-arg value="15"/>
+	</bean>
+	
+	<bean id="poeticDuke" class="cn.sxx.springinaction.springidol.PoeticJuggler">
+	    <constructor-arg value="15"/>
+	    <constructor-arg>
+	        	<bean class="cn.sxx.springinaction.springidol.Sonnet29"/>
+	    </constructor-arg>
+	</bean>
+	
+
+	
+	<bean id="theStage" class="cn.sxx.springinaction.springidol.Stage"
+	    factory-method="getInstance">
+	</bean>
+	
+	<bean id="saxophone" class="cn.sxx.springinaction.springidol.Saxophone"/>
+	
+	<bean id="kenny" class="cn.sxx.springinaction.springidol.Instrumentalist"
+	   p:song="Jingle Bells" p:instrument-ref="saxophone">
+	</bean>
+	
+	<bean id="hank" class="cn.sxx.springinaction.springidol.OnemanBand">
+	    <property name="instruments">
+	        <list>
+	            <ref bean="guitar"/>
+	            <ref bean="cymbal"/>
+	            <ref bean="harmonica"/>
+	        </list>
+	    </property>
+	</bean>
       
 </beans>
